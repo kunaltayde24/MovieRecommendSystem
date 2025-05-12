@@ -44,10 +44,12 @@ def recommend(movie):
 st.set_page_config(page_title="Movie Recommender System", page_icon="🎬", layout="wide")
 st.title('🎬 Movie Recommender System')
 
-# Load data
+# Load data 
+import joblib
+similarity = joblib.load('similarity_compressed.pkl')
 movies_dict = pickle.load(open('movie_dict.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
-similarity = pickle.load(open('similarity_compressed.pkl', 'rb'))
+# similarity = pickle.load(open('similarity_compressed.pkl', 'rb'))
 
 # Search bar with auto-complete
 search_query = st.text_input("🔍 Search for a movie:", "", placeholder="Enter a movie name...")
